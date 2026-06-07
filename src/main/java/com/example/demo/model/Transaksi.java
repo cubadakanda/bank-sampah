@@ -18,7 +18,7 @@ public class Transaksi {
 
     private LocalDate tanggal;
 
-    @OneToMany(mappedBy = "transaksi")
+    @OneToMany(mappedBy = "transaksi", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Pembayaran> pembayaranList;
 
     public Long getIdTransaksi() { return idTransaksi; }

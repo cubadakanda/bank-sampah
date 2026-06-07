@@ -15,8 +15,11 @@ public class Warga {
     private String alamat;
     private String noHp;
 
-    @OneToMany(mappedBy = "warga")
+    @OneToMany(mappedBy = "warga", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Transaksi> transaksiList;
+
+    @OneToOne(mappedBy = "warga", cascade = CascadeType.ALL, orphanRemoval = true)
+    private User user;
 
     public Long getIdWarga() { return idWarga; }
     public void setIdWarga(Long idWarga) { this.idWarga = idWarga; }
@@ -32,6 +35,9 @@ public class Warga {
 
     public List<Transaksi> getTransaksiList() { return transaksiList; }
     public void setTransaksiList(List<Transaksi> transaksiList) { this.transaksiList = transaksiList; }
+
+    public User getUser() { return user; }
+    public void setUser(User user) { this.user = user; }
 
     /** Polymorphism: override toString() dari Object */
     @Override
