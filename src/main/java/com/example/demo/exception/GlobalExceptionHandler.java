@@ -38,8 +38,9 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(Exception.class)
     public String handleGeneralException(Exception ex, Model model) {
+        ex.printStackTrace(); // Cetak log di server
         model.addAttribute("errorTitle", "Terjadi Kesalahan");
-        model.addAttribute("errorMessage", "Sistem mengalami gangguan. Silakan coba lagi.");
+        model.addAttribute("errorMessage", "Sistem mengalami gangguan: " + ex.getMessage());
         model.addAttribute("errorCode", "500");
         return "error";
     }
